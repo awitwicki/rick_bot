@@ -92,6 +92,14 @@ regex_letters = {'а' : ['а', 'a', '@'],
   'я' : ['я', 'ya'],
 }
 
+def get_pasta():
+    file = open('pastas.txt', "r", encoding="utf-8")
+    text = file.read()
+    pastas = text.split(';')
+    pasta = random.choice(pastas)
+
+    return pasta
+
 def getStory():
     file = open('stories.txt', "r", encoding="utf-8")
     lines = file.readlines()
@@ -178,6 +186,10 @@ def echo(update, context):
         messageText = message.text.lower()
 
         # commands
+        if messageText == "паста":
+            replytext= get_pasta()
+            message.reply_text(replytext)
+            return
         if messageText == "история":
             replytext= getStory()
             message.reply_text(replytext)
