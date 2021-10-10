@@ -1,0 +1,10 @@
+version: "3.3"
+services:
+  druzhokbot:
+    build: .
+    image: rickbot
+    env_file:
+    - .env
+    container_name: rickbot-container
+    restart: always
+    network_mode: host
